@@ -4,6 +4,7 @@ const fs = require("fs");
 const multer = require("multer");
 const webpush = require("web-push");
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -23,6 +24,12 @@ webpush.setVapidDetails(
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+const uploadsDir = path.join(__dirname, "public", "uploads");
+
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 const upload = multer({
     storage: multer.diskStorage({
