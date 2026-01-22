@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapNote</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#333333">
+</head>
+<body>
+
+    <header>
+        <h1> SnapNote</h1>
+        <button id="enable-push">🔔 Omogući obavijesti</button>
+        <nav>
+            <a href="/index.html">Početna</a>
+            <a href="/capture.html">Novi snap</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Moji snapovi</h2>
+        <ul id="snap-list"></ul>
+    </main>
+
+    <script src="/js/app.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("/sw.js")
+                .then(() => console.log("Service Worker registered"))
+                .catch(err => console.error("SW registration failed", err));
+        }
+    </script>
+</body>
+</html>

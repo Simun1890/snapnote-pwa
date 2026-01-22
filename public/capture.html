@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novi snap</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#333333">
+
+</head>
+<body>
+
+    <header>
+        <h1>➕ Novi snap</h1>
+        <nav>
+            <a href="/index.html">Početna</a>
+        </nav>
+    </header>
+
+    <main>
+        <form id="snap-form">
+
+            <label>
+                Naslov:
+                <input type="text" id="title" required />
+            </label>
+
+            
+            <div id="camera-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas" hidden></canvas>
+                <button type="button" id="snap-btn">📸 Snimi</button>
+            </div>
+
+            
+            <div id="fallback" hidden>
+                <label>
+                    Odaberi sliku:
+                    <input type="file" id="image-upload" accept="image/*">
+                </label>
+            </div>
+
+            <button type="submit">Spremi</button>
+        </form>
+    </main>
+    <script src="/js/idb.js"></script>
+    <script src="/js/capture.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js");
+        }
+    </script>
+</body>
+</html>
