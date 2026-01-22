@@ -7,6 +7,9 @@ const webpush = require("web-push");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log("Server running on port", PORT);
+});
 
 const VAPID_PUBLIC_KEY =
     "BNYSy4HYMVjSny_qcuNiUYWOyqcwAZ68eT-cc3r-4GXiudNYgFW06zIp_TSURMGkPhw58eebnTjVyQ7nepSNVAU";
